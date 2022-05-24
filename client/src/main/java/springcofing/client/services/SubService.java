@@ -20,7 +20,7 @@ public class SubService {
 	public Subscription get(Long id) {
 		Optional<Subscription> optional = subRepo.findById(id);
 
-		return optional.orElseGet(Subscription::new);
+		return optional.orElse(null);
 	}
 
 	public void delete(Subscription subscription) {

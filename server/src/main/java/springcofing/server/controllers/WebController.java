@@ -27,4 +27,13 @@ public class WebController {
 	public Response add() {
 		return webService.postadd();
 	}
+
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public Response delete() {
+		return webService.delete();
+	}
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public Response update() {
+		return webService.update();
+	}
 }
