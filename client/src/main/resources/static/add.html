@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset = "UTF-8">
+	<title>Subscribe here</title>
+	<link rel = "stylesheet" href = "/css/style.css">
+	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div>
+	<h3>Subscribe to Client</h3>
+	<label for = "email">Enter email: </label>
+	<input type = "text" id = "email" placeholder = "Enter Email" />
+	<button id = "send">Subscribe</button>
+
+</div>
+</body>
+
+<script>
+	$("#send").click(function () {
+		getData($("#email").val());
+	});
+
+	function getData(input) {
+		$.ajax({
+			url: "/api/add",
+			data: JSON.stringify({"email": input}),
+			cache: false,
+			type: 'post',
+			dataType: 'json',
+			contentType: "application/json",
+			success: function (data) {
+				console.log(data);
+				alert(data.message);
+				window.location.href = "/";
+			}
+		});
+	}
+</script>
+</html>
